@@ -73,7 +73,7 @@ export default function IndexPage() {
             <span className="sr-only">GitHub</span>
           </Link>
           <Link
-            href={siteConfig.links.twitter}
+            href={siteConfig.links.linkedin}
             target="_blank"
             rel="noreferrer"
             className="flex space-x-4"
@@ -91,7 +91,7 @@ export default function IndexPage() {
             <span className="sr-only">Twitter</span>
           </Link>
           <Link
-            href={siteConfig.links.twitter}
+            href={siteConfig.links.facebook}
             target="_blank"
             rel="noreferrer"
             className="flex space-x-4"
@@ -100,7 +100,7 @@ export default function IndexPage() {
             <span className="sr-only">Facebook</span>
           </Link>
           <Link
-            href={siteConfig.links.twitter}
+            href={siteConfig.links.instagram}
             target="_blank"
             rel="noreferrer"
             className="flex space-x-4"
