@@ -6,13 +6,13 @@ import { useTheme } from "next-themes"
 import { Icons } from "@/components/icons"
 
 const Logo = () => {
-  const { theme, resolvedTheme, systemTheme } = useTheme()
+  const { resolvedTheme } = useTheme()
   return (
-    <Link href="/" className="-ml-1 lg:-ml-2 lg:mb-4">
+    <Link href="/" className="-ml-2 mb-4 lg:-ml-2">
       {resolvedTheme === "dark" ? (
-        <Icons.lightLogo className="h-8" />
+        <Icons.lightLogo className="h-6 lg:h-8" />
       ) : (
-        <Icons.logo className="h-8" />
+        <Icons.logo className="h-6 lg:h-8" />
       )}
     </Link>
   )

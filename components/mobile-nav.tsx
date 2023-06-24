@@ -1,57 +1,59 @@
+"use client"
+
 import * as React from "react"
-import dynamic from "next/dynamic"
-import Link from "next/link"
+import { useRef } from "react"
+import dynamic, { LoaderComponent } from "next/dynamic"
+import { motion, useCycle } from "framer-motion"
 
-import { MainNavItem } from "types"
-import { cn, currentDayName } from "@/lib/utils"
-import { useLockBody } from "@/hooks/use-lock-body"
-import { Separator } from "@/components/ui/separator"
-import { ModeToggle } from "@/components/mode-toggle"
+import { useDimensions } from "@/lib/use-dimensions"
+import { Navigation } from "@/components/navigation"
 
-const Logo = dynamic(() => import("@/components/logo"), {
-  ssr: false,
-})
+const MenuToggle = dynamic(
+  () => import("@/components/menu-toggle").then((module) => module.MenuToggle),
+  {
+    ssr: false,
+  }
+)
 
-interface MobileNavNewProps {
-  items: MainNavItem[]
-  children?: React.ReactNode
+const sidebar = {
+  open: (height = 1000) => ({
+    clipPath: `circle(${height * 2 + 200}px at 265px 40px)`,
+    transition: {
+      type: "spring",
+      stiffness: 20,
+      restDelta: 2,
+    },
+  }),
+  closed: {
+    clipPath: "circle(22px at 265px 40px)",
+    transition: {
+      delay: 0.5,
+      type: "spring",
+      stiffness: 400,
+      damping: 40,
+    },
+  },
 }
 
-export function MobileNav({ items, children }: MobileNavNewProps) {
-  useLockBody()
+export function MobileNav() {
+  const [isOpen, toggleOpen] = useCycle(false, true)
+  const containerRef = useRef<HTMLDivElement>(null)
+  const { height } = useDimensions(containerRef)
 
   return (
-    <div
-      className={cn(
-        "fixed inset-0 top-16 z-50 grid h-[calc(100vh-4rem)] grid-flow-row auto-rows-max overflow-auto p-6 pb-32 shadow-md animate-in slide-in-from-bottom-80 lg:hidden"
-      )}
+    <motion.nav
+      initial={false}
+      animate={isOpen ? "open" : "closed"}
+      custom={height}
+      ref={containerRef}
+      className="absolute inset-y-0 right-0 z-50 w-[300px] lg:hidden"
     >
-      <div className="relative z-20 grid gap-6 rounded-md bg-popover p-4 text-popover-foreground shadow-md">
-        <Logo />
-        <nav className="grid grid-flow-row auto-rows-max text-sm">
-          {items.map((item, index) => (
-            <Link
-              key={index}
-              href={item.disabled ? "#" : item.href}
-              className={cn(
-                "flex w-full items-center rounded-md p-2 text-sm font-medium hover:underline",
-                item.disabled && "cursor-not-allowed opacity-60"
-              )}
-            >
-              {item.title}
-            </Link>
-          ))}
-          <Separator className="my-2 mt-6" />
-          <div className="justfiy-between flex items-center">
-            <p className="grow text-left text-sm font-medium text-muted-foreground">
-              zaycho{` © ${new Date().getFullYear()}`} <br />
-              Have a good {currentDayName()}!
-            </p>
-            <ModeToggle />
-          </div>
-        </nav>
-        {children}
-      </div>
-    </div>
+      <motion.div
+        className="absolute inset-y-0 right-0 w-[300px] bg-muted"
+        variants={sidebar}
+      />
+      <Navigation />
+      <MenuToggle toggle={toggleOpen} />
+    </motion.nav>
   )
 }
