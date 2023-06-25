@@ -19,7 +19,7 @@ export const navConfig: NavConfig = {
     {
       title: "About",
       href: "/about",
-      disabled: true,
+      disabled: false,
     },
   ],
 }

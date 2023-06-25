@@ -4,7 +4,7 @@ import { withContentlayer } from "next-contentlayer"
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["avatars.githubusercontent.com"],
+    domains: ["avatars.githubusercontent.com", "images.unsplash.com"],
   },
   experimental: {
     appDir: true,
