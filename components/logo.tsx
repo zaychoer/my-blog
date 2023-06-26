@@ -8,7 +8,7 @@ import { Icons } from "@/components/icons"
 const Logo = () => {
   const { resolvedTheme } = useTheme()
   return (
-    <Link href="/" className="-ml-2 mb-4 lg:-ml-2">
+    <Link href="/" className="mb-4 lg:-ml-2">
       {resolvedTheme === "dark" ? (
         <Icons.lightLogo className="h-6 lg:h-8" />
       ) : (

@@ -1,6 +1,5 @@
 import * as React from "react"
 
-import { ScrollArea } from "@/components/ui/scroll-area"
 import { MobileNav } from "@/components/mobile-nav"
 import About from "@/components/pages/about"
 
@@ -13,11 +12,9 @@ export default function AboutPage() {
   return (
     <>
       <MobileNav />
-      <ScrollArea className="col-span-3 mx-auto flex h-screen w-full flex-col">
-        <React.Fragment>
-          <About />
-        </React.Fragment>
-      </ScrollArea>
+      <div className="col-span-3 mx-auto flex h-screen w-full flex-col lg:overflow-auto">
+        <About />
+      </div>
     </>
   )
 }

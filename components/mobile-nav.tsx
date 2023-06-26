@@ -2,10 +2,9 @@
 
 import * as React from "react"
 import { useRef } from "react"
-import dynamic, { LoaderComponent } from "next/dynamic"
-import { motion, useCycle } from "framer-motion"
+import dynamic from "next/dynamic"
+import { stagger, useAnimate, useInView } from "framer-motion"
 
-import { useDimensions } from "@/lib/use-dimensions"
 import { Navigation } from "@/components/navigation"
 
 const MenuToggle = dynamic(
@@ -15,45 +14,74 @@ const MenuToggle = dynamic(
   }
 )
 
-const sidebar = {
-  open: (height = 1000) => ({
-    clipPath: `circle(${height * 2 + 200}px at 265px 40px)`,
-    transition: {
-      type: "spring",
-      stiffness: 20,
-      restDelta: 2,
-    },
-  }),
-  closed: {
-    clipPath: "circle(22px at 265px 40px)",
-    transition: {
-      delay: 0.5,
-      type: "spring",
-      stiffness: 400,
-      damping: 40,
-    },
-  },
+function useMenuAnimation(isOpen: boolean) {
+  const [scope, animate] = useAnimate()
+
+  React.useEffect(() => {
+    const menuAnimations: any[] = isOpen
+      ? [
+          [
+            "nav",
+            { transform: "translateX(0%)" },
+            { ease: [0.08, 0.65, 0.53, 0.96], duration: 0.6 },
+          ],
+          [
+            "li",
+            { transform: "scale(1)", opacity: 1, filter: "blur(0px)" },
+            { delay: stagger(0.05), at: "-0.1" },
+          ],
+        ]
+      : [
+          [
+            "li",
+            { transform: "scale(0.5)", opacity: 0, filter: "blur(10px)" },
+            { delay: stagger(0.05, { from: "last" }), at: "<" },
+          ],
+          ["nav", { transform: "translateX(-100%)" }, { at: "-0.1" }],
+        ]
+
+    animate([
+      [
+        "path.top",
+        { d: isOpen ? "M 3 16.5 L 17 2.5" : "M 2 2.5 L 20 2.5" },
+        { at: "<" },
+      ],
+      ["path.middle", { opacity: isOpen ? 0 : 1 }, { at: "<" }],
+      [
+        "path.bottom",
+        { d: isOpen ? "M 3 2.5 L 17 16.346" : "M 2 16.346 L 20 16.346" },
+        { at: "<" },
+      ],
+      ...menuAnimations,
+    ])
+  }, [isOpen, animate])
+
+  return scope
 }
 
 export function MobileNav() {
-  const [isOpen, toggleOpen] = useCycle(false, true)
-  const containerRef = useRef<HTMLDivElement>(null)
-  const { height } = useDimensions(containerRef)
+  const ref = useRef<HTMLDivElement>(null)
+  const isInView = useInView(ref, { once: true })
+
+  const [isOpen, setIsOpen] = React.useState<boolean>(false)
+
+  const scope = useMenuAnimation(isOpen)
 
   return (
-    <motion.nav
-      initial={false}
-      animate={isOpen ? "open" : "closed"}
-      custom={height}
-      ref={containerRef}
-      className="absolute inset-y-0 right-0 z-50 w-[300px] lg:hidden"
-    >
-      <motion.div
-        className="absolute inset-y-0 right-0 w-[300px] bg-muted"
-        variants={sidebar}
-      />
-      <Navigation />
-      <MenuToggle toggle={toggleOpen} />
-    </motion.nav>
+    <section className="lg:hidden" ref={ref}>
+      <span
+        style={{
+          transform: isInView ? "none" : "translateX(-200px)",
+          opacity: isInView ? 1 : 0,
+          transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s",
+        }}
+        className="fixed left-0 top-0 z-20 translate-x-[200px] opacity-0"
+      >
+        <div className="fixed left-0 top-0 z-20" ref={scope}>
+          <Navigation />
+          <MenuToggle toggle={() => setIsOpen(!isOpen)} />
+        </div>
+      </span>
+    </section>
   )
 }

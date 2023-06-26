@@ -14,7 +14,7 @@ const Logo = dynamic(() => import("@/components/logo"), {
 
 export function SideNav() {
   return (
-    <div className="mx-auto hidden h-screen w-full flex-col justify-center bg-muted p-8 lg:flex lg:pl-14 xl:pl-24">
+    <div className="mx-auto hidden h-screen w-full flex-col justify-center bg-muted p-8 lg:flex lg:pl-14 xl:pl-16">
       <div className="flex flex-col space-y-5 text-center">
         <nav className="grid gap-4 text-sm">
           <Logo />

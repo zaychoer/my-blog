@@ -1,11 +1,10 @@
 "use client"
 
 import * as React from "react"
-import { useRef } from "react"
 import { useInView } from "framer-motion"
 
 export function Section({ children }: { children: React.ReactNode }) {
-  const ref = useRef<HTMLDivElement>(null)
+  const ref = React.useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { once: true })
 
   return (
