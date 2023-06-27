@@ -12,7 +12,7 @@ export default function IndexPage() {
   return (
     <>
       <MobileNav />
-      <div className="col-span-3 mx-auto flex h-screen w-full flex-col overflow-auto">
+      <div className="col-span-3 mx-auto flex min-h-screen w-full flex-col overflow-auto">
         <Home />
       </div>
     </>

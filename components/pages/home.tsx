@@ -7,12 +7,11 @@ import { motion } from "framer-motion"
 import { siteConfig } from "@/config/site"
 import { Section } from "@/hooks/use-in-view"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import AnimatedTitle from "@/components/animated-title"
 import { Icons } from "@/components/icons"
 
 export default function Home() {
   return (
-    <div className="mx-auto flex h-screen w-full flex-col justify-center space-y-8 pt-10 sm:w-5/6 lg:col-span-3 lg:w-4/6 lg:p-8 xl:w-3/6">
+    <div className="mx-auto w-full grow flex-col justify-center space-y-8 pt-16 sm:w-5/6 lg:col-span-3 lg:w-4/6 lg:p-8 xl:w-3/6">
       <Section>
         <div className="flex flex-col space-y-5 text-center">
           <Avatar>
