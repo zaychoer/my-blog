@@ -2,6 +2,7 @@ import {
   AlertTriangle,
   ArrowRight,
   Check,
+  CheckCheck,
   ChevronLeft,
   ChevronRight,
   Command,
@@ -61,6 +62,7 @@ export const Icons = {
   instagram: Instagram,
   github: Github,
   check: Check,
+  check2: CheckCheck,
   gitHub: ({ ...props }: LucideProps) => (
     <svg
       aria-hidden="true"

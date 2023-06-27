@@ -11,7 +11,7 @@ import { Icons } from "@/components/icons"
 
 export default function Home() {
   return (
-    <div className="mx-auto w-full grow flex-col justify-center space-y-8 pt-16 sm:w-5/6 lg:col-span-3 lg:w-4/6 lg:p-8 lg:pt-36 xl:w-3/6">
+    <div className="mx-auto w-full grow flex-col justify-center space-y-8 pt-16 sm:w-5/6 lg:col-span-3 lg:w-4/6 lg:p-8 lg:pt-[45px] xl:w-3/6">
       <Section>
         <div className="flex flex-col space-y-5 text-center">
           <Avatar>

@@ -11,7 +11,7 @@ export default function HomeLayout({ children }: HomeLayoutProps) {
         <header className="sticky top-0 z-10 backdrop-blur-lg lg:hidden">
           <nav className="h-16"></nav>
         </header>
-        <div className="container grid w-screen grow flex-col items-center justify-center lg:max-w-none lg:grid-cols-4 lg:px-0">
+        <div className="container grid w-screen flex-col items-center justify-center lg:max-w-none lg:grid-cols-4 lg:px-0">
           <SideNav />
           {children}
         </div>

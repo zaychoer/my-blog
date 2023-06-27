@@ -12,7 +12,7 @@ export default function AboutPage() {
   return (
     <>
       <MobileNav />
-      <div className="col-span-3 mx-auto flex h-screen w-full flex-col lg:overflow-auto">
+      <div className="col-span-3 mx-auto flex w-full flex-col lg:h-screen lg:overflow-auto">
         <About />
       </div>
     </>
