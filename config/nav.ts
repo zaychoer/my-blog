@@ -9,7 +9,7 @@ export const navConfig: NavConfig = {
     {
       title: "Blog",
       href: "/blog",
-      disabled: true,
+      disabled: false,
     },
     {
       title: "Projects",

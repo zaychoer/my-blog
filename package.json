@@ -28,6 +28,7 @@
     "class-variance-authority": "^0.4.0",
     "clsx": "^1.2.1",
     "contentlayer": "^0.3.3",
+    "date-fns": "^2.30.0",
     "framer-motion": "^10.12.16",
     "install": "^0.13.0",
     "lucide-react": "^0.246.0",

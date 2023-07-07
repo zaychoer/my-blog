@@ -8,6 +8,7 @@ const nextConfig = {
       "avatars.githubusercontent.com",
       "images.unsplash.com",
       "djvy46h6795ez.cloudfront.net",
+      "github.com",
     ],
   },
   experimental: {
