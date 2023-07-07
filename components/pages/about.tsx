@@ -31,8 +31,8 @@ export default function About() {
       <Section>
         <AspectRatio ratio={16 / 6} className="mt-4 bg-muted lg:mt-6">
           <Image
-            src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80"
-            alt="Photo by Drew Beamer"
+            src="https://djvy46h6795ez.cloudfront.net/my-blog/about-me.png"
+            alt="About Me"
             className="rounded-md object-cover"
             fill
             priority
