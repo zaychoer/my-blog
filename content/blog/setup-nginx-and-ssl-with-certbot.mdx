@@ -1,0 +1,210 @@
+---
+title: Setup Nginx and SSL with Certbot
+description: How to setup Nginx and Free SSL with Certbot by Let's Encrypt.
+image: https://djvy46h6795ez.cloudfront.net/my-blog/certbot-letsencrypt-nginx.png
+date: "2023-07-10"
+authors:
+  - zaycho
+---
+
+[Nginx](https://nginx.com) (pronounced "engine-x") is a popular open-source web server and reverse proxy server software. It is designed to handle high-concurrency, low-memory usage, and perform efficiently under heavy loads. Originally created to solve the C10k problem (handling 10,000 concurrent connections), Nginx has gained widespread popularity and is widely used as a web server, reverse proxy, load balancer, and HTTP cache.
+
+Nginx is widely used by websites, web applications, content delivery networks (CDNs), and many other services to improve performance, scalability, and security. Its lightweight nature, flexibility, and extensive feature set have contributed to its popularity among developers and system administrators.
+
+In this blog, we'll use one key feature from Nginx, which is Reverse Proxy, which forwards requests from clients to the backend servers. This helps distribute traffic, load balance requests, and provide high availability and fault tolerance for web applications.
+
+Oke let's install Nginx in our server :
+
+```ssh
+curl http://nginx.org/keys/nginx_signing.key | sudo apt-key add -
+sudo apt-get update && sudo apt-get -y install nginx
+```
+
+Then you can test Nginx to see if it's installed properly using this command : `sudo nginx -t`. If the result looks like the code below, you have successfully installed Nginx.
+
+```ssh
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+```
+
+For information about how to install nginx, [read the documentation](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/)
+
+Before we setup free SSL using Certbot by Let's Encrypt, we should assign a registered domain name to the Lightsail Server.
+
+There are a few prerequisites to assigning a domain name to a Lightsail instance.
+1. You must have a domain name registered with a provider of your choice. (_In this blog I am using namecheap_)
+2. [A running Lightsail server](https://zaycho.me/blog/deploying-strapi-to-aws-lightsail)
+3. Static IP assigned to your server.
+
+##### Assign Static IP to Lighsail server
+Log in to your Amazon Lightsail Console and click on the Networking Tab :
+1. Create static IP
+2. Choose your static IP location
+3. Attach your lightsail instance
+4. Give a name to identify your static IP.
+5. Click button create, done 🥳
+
+<Image
+  src="https://djvy46h6795ez.cloudfront.net/my-blog/assign-static-ip.png"
+  width="700"
+  height="400"
+  alt="assign static ip"
+/>
+
+##### Assign DNS Zone to Lightsail server
+
+Navigate to Amazon Lighsail Home then click tab menu *Domains & DNS*, click button Create DNS zone. In this blog I'll register my domain name *zaycho.me*. Click button Create DNS zone, done 🥳.
+
+<Image
+  src="https://djvy46h6795ez.cloudfront.net/my-blog/create-dns-zone.png"
+  width="700"
+  height="400"
+  alt="assign static ip"
+/>
+
+After creating a DNS zone, don't forget to update the name servers of your domain to match the name servers of the DNS zone. See the image below for how to update the name servers.
+
+<Image
+  src="https://djvy46h6795ez.cloudfront.net/my-blog/dns-zone-nameservers.png"
+  width="700"
+  height="400"
+  alt="assign static ip"
+/>
+
+On the same page, navigate to the tab menu **Assignments** to assign your domain or subdomains. I'll assign my subdomain, then select a resource (_your static IP address_).
+
+
+<Image
+  src="https://djvy46h6795ez.cloudfront.net/my-blog/assign-domain.png"
+  width="700"
+  height="400"
+  alt="assign static ip"
+/>
+
+Navigate to the DNS records tab, you will see your subdomain listed among the records. Don't forget to add your main domain to this record, if you don't, your main domain will be unaccessible to ther public I've already addedd my main domain, you can see the image below.
+
+<Image
+  src="https://djvy46h6795ez.cloudfront.net/my-blog/list-dns-records.png"
+  width="700"
+  height="400"
+  alt="assign static ip"
+/>
+
+All done! You have assigned a domain name to Lightsail Server. You can test by entering your domain name into a browser to see if your website loads. If it doesn’t load immediately, be patient. It can take anywhere from 2 to -48 hours for DNS to propagate..
+
+If your domain or subdomain is accessible, you will see the default page for nginx because it will automatically point to port 80, so we should forward request clients to port 1337 for our strapi app, and you can see on the url input that it's not secure because we haven't setup certbot by Let's Encrypt to create **SSL** for our domain.
+
+<Image
+  src="https://djvy46h6795ez.cloudfront.net/my-blog/wellcome-nginx.png"
+  width="700"
+  height="400"
+  alt="assign static ip"
+/>
+
+##### Setup SSL using Certbot by Let's Encrypt
+
+Firstly, you have to forward requests from the client to port 1337. You can handle this by configuring a reverse proxy in your Nginx server block. Create a file inside the site-available directory :
+
+```ssh
+sudo vi /etc/nginx/sites-available/strapi-app.zaycho.me
+```
+
+Copy/paste the code below into the file that you have created before.
+
+```ssh
+server {
+	    listen 80;
+	    return 301 https://$host$request_uri;
+	}
+	server {
+	    server_name strapi-app.zaycho.me www.strapi-app.zaycho.me;
+	    client_max_body_size 1M;
+	    location / {
+	      proxy_set_header Host $host;
+	      proxy_set_header X-Real-IP $remote_addr;
+	      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+	      proxy_set_header X-Forwarded-Proto $scheme;
+	      proxy_pass http://localhost:1337;
+	      proxy_read_timeout 90;
+	  }
+	}
+```
+
+Save the configuration file and exit.
+
+Create a symbolic link named strapi-app.zaycho.me in the /etc/nginx/sites-enabled/ directory that points to the actual configuration file, /etc/nginx/sites-available/strapi-app.zaycho.me. This allows Nginx to include and enable the server block defined in strapi-app.zaycho.me when processing incoming requests.
+
+```ssh
+sudo ln -s /etc/nginx/sites-available/strapi-app.zaycho.me /etc/nginx/sites-enabled/
+```
+
+Test the Nginx configuration for syntax errors by running the following command:
+
+```ssh
+sudo nginx -t
+```
+
+If the configuration test is successful, restart or reload Nginx to apply the changes. This is command to restart or reload Nginx:
+
+```ssh
+sudo systemctl restart nginx
+```
+
+Now, Nginx will act as a reverse proxy and forward requests to port 1337 on the localhost. When a client makes a request to your server, Nginx will receive the request, pass it to the backend server running on port 1337, and relay the response back to the client. But your web still not secure 😊
+
+<Image
+  src="https://djvy46h6795ez.cloudfront.net/my-blog/strapi-app-not-secure.png"
+  width="700"
+  height="400"
+  alt="assign static ip"
+/>
+
+Make sure that the application running on port 1337 is configured to accept requests from localhost or adjust the configuration accordingly if the backend server is running on a different host.
+
+##### Installing Cerbot
+
+To install Certbot, which is a tool provided by Let's Encrypt for obtaining and managing SSL/TLS certificates, you can follow the step below.
+
+Install Certbot's package for Nginx, because we're using Nginx:
+
+```ssh
+sudo apt install certbot python3-certbot-nginx
+```
+
+For information about how to install certbot, [Certbot Installation Guide]( https://certbot.eff.org/instructions)
+
+Then setup certbot for your domain
+
+```ssh
+sudo certbot --nginx -d strapi-app.zaycho.me
+```
+
+Dont' forget to restart or reload Nginx to apply new configuration :
+
+```ssh
+sudo systemctl restart nginx
+```
+
+If your strapi-app is unaccessible, you have to open port 443, or https, to make it accessible to the public. See the image below for how to configure it.
+
+<Image
+  src="https://djvy46h6795ez.cloudfront.net/my-blog/open-port-https-443.png"
+  width="700"
+  height="400"
+  alt="assign static ip"
+/>
+
+Now your strapi app is secure 🥳
+
+<Image
+  src="https://djvy46h6795ez.cloudfront.net/my-blog/connection-secure.png"
+  width="700"
+  height="400"
+  alt="assign static ip"
+/>
+
+I hope that the content I shared was informative, engaging, and valuable to you. It's always rewarding to know that my words have resonated with readers like you. Your feedback are always welcome and encourage me to continue creating meaningful content.
+
+If there are any specific topics or subjects you would like me to cover in future blog posts, please don't hesitate to let me know. I'm here to serve you and provide the information you find most relevant and interesting.
+
+Once again, thank you for being a dedicated reader of my blog. Your presence and participation are highly valued. Stay tuned for more exciting content in the future!
