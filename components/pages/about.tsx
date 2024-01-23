@@ -66,9 +66,9 @@ export default function About() {
         </p>
       </Section>
       {/* Separator */}
-      <Section>
+     {/* <Section>
         <Separator className="my-4" />
-      </Section>
+      </Section> */}
       {/* Profile  */}
       {/* <Section>
         <div className="grid grid-cols-1 gap-x-4 gap-y-2 text-sm md:grid-cols-2 md:gap-x-8 xl:text-base">
@@ -133,9 +133,9 @@ export default function About() {
         </div>
       </Section> */}
       {/* Separator */}
-      <Section>
+      {/* <Section>
         <Separator className="my-4" />
-      </Section>
+      </Section> */}
       {/* CV */}
       <Section>
         <Button asChild>
