@@ -70,7 +70,7 @@ export default function About() {
         <Separator className="my-4" />
       </Section>
       {/* Profile  */}
-      <Section>
+      {/* <Section>
         <div className="grid grid-cols-1 gap-x-4 gap-y-2 text-sm md:grid-cols-2 md:gap-x-8 xl:text-base">
           <div className="flex items-center">
             <p className="font-medium leading-none">Birthday</p>
@@ -131,7 +131,7 @@ export default function About() {
             </p>
           </div>
         </div>
-      </Section>
+      </Section> */}
       {/* Separator */}
       <Section>
         <Separator className="my-4" />
