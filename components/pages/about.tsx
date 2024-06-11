@@ -224,6 +224,9 @@ export default function About() {
             </ul>
           </Section>
           <Section>
+            <Separator className="my-4" />
+          </Section>
+          <Section>
             <section className="flex items-center space-x-1 lg:space-x-2">
               <p className="text-base font-semibold text-muted-foreground lg:text-lg">
                 Backend Engineer @
