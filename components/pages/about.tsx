@@ -31,7 +31,7 @@ export default function About() {
       <Section>
         <AspectRatio ratio={16 / 6} className="mt-4 bg-muted lg:mt-6">
           <Image
-            src="https://djvy46h6795ez.cloudfront.net/my-blog/about-me.png"
+            src="https://d1n6fa18ox4kyq.cloudfront.net/my-blog/about-me.png"
             alt="About Me"
             className="rounded-md object-cover"
             fill
@@ -57,90 +57,20 @@ export default function About() {
       {/* Description */}
       <Section>
         <p className="text-sm text-muted-foreground lg:text-base">
-          I am a skilled software engineer with experience in various web
-          technologies, including Ruby on Rails, Node.js, and Golang. I have
-          worked on multiple projects such as e-commerce websites, inventory
-          management, and accounting systems. I am always eager to learn and
-          adapt to new technologies to develop innovative and efficient
-          solutions.
+          Proven ability to design, develop, and deploy robust, scalable web
+          applications using Ruby on Rails and modern JavaScript technologies.
+          Extensive experience designing, building, and maintaining robust web
+          applications across diverse industries. Adept at tackling complex
+          technical challenges, collaborating effectively in teams, and
+          consistently delivering high-quality solutions on time. Always eager
+          to learn and adapt to new technologies to develop innovative and
+          efficient solutions.
         </p>
       </Section>
-      {/* Separator */}
-     {/* <Section>
-        <Separator className="my-4" />
-      </Section> */}
-      {/* Profile  */}
-      {/* <Section>
-        <div className="grid grid-cols-1 gap-x-4 gap-y-2 text-sm md:grid-cols-2 md:gap-x-8 xl:text-base">
-          <div className="flex items-center">
-            <p className="font-medium leading-none">Birthday</p>
-            <p className="ml-auto font-medium text-muted-foreground">
-              25.12.1989
-            </p>
-          </div>
-          <div className="flex items-center">
-            <p className="font-medium leading-none">Age</p>
-            <p className="ml-auto font-medium text-muted-foreground">33</p>
-          </div>
-          <div className="flex items-center">
-            <p className="font-medium leading-none">Address</p>
-            <p className="ml-auto font-medium text-muted-foreground">
-              Jl. Lembang 1 No.21
-            </p>
-          </div>
-          <div className="flex items-center">
-            <p className="font-medium leading-none">Phone</p>
-            <p className="ml-auto font-medium text-muted-foreground">
-              +62 857 1583 4707
-            </p>
-          </div>
-          <div className="flex items-center">
-            <p className="font-medium leading-none">Email</p>
-            <p className="ml-auto font-medium text-muted-foreground">
-              zaycho25@gmail.com
-            </p>
-          </div>
-          <div className="flex items-center">
-            <p className="font-medium leading-none">Nationality</p>
-            <p className="ml-auto font-medium text-muted-foreground">
-              Indonesia
-            </p>
-          </div>
-          <div className="flex items-center">
-            <p className="font-medium leading-none">Study</p>
-            <p className="ml-auto font-medium text-muted-foreground">
-              MA. Al-Zaytun
-            </p>
-          </div>
-          <div className="flex items-center">
-            <p className="font-medium leading-none">Degree</p>
-            <p className="ml-auto font-medium text-muted-foreground">
-              Junior High School Diploma
-            </p>
-          </div>
-          <div className="flex items-center">
-            <p className="font-medium leading-none">Hobby</p>
-            <p className="ml-auto font-medium text-muted-foreground">
-              Playing Football
-            </p>
-          </div>
-          <div className="flex items-center">
-            <p className="font-medium leading-none">Fulltime/Freelance</p>
-            <p className="ml-auto font-medium text-muted-foreground">
-              Available
-            </p>
-          </div>
-        </div>
-      </Section> */}
-      {/* Separator */}
-      {/* <Section>
-        <Separator className="my-4" />
-      </Section> */}
-      {/* CV */}
       <Section>
         <Button asChild>
           <Link
-            href="https://djvy46h6795ez.cloudfront.net/my-blog/zaycho-resume.pdf"
+            href="https://d1n6fa18ox4kyq.cloudfront.net/my-blog/zaycho-resume-new.pdf"
             target="_blank"
             className="text-xs lg:text-sm"
           >
@@ -158,6 +88,141 @@ export default function About() {
           <h2 className="text-xl font-extrabold tracking-tight lg:text-2xl">
             Experience
           </h2>
+          <Section>
+            <section className="flex items-center space-x-1 lg:space-x-2">
+              <p className="text-base font-semibold text-muted-foreground lg:text-lg">
+                Software Engineer @
+              </p>
+              <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 1 }}>
+                <Link
+                  href="#"
+                  target="_blank"
+                  className="cursor-pointer text-base font-bold tracking-tight hover:underline lg:text-lg"
+                >
+                  PT. Prima Raya Solusindo,
+                </Link>
+              </motion.div>
+              <p className="text-base font-semibold text-muted-foreground lg:text-lg">
+                placement @
+              </p>
+              <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 1 }}>
+                <Link
+                  href="https://ioh.co.id"
+                  target="_blank"
+                  className="cursor-pointer text-base font-bold tracking-tight hover:underline lg:text-lg"
+                >
+                  PT. Indosat TBK
+                </Link>
+              </motion.div>
+            </section>
+            <p className="text-xs text-muted-foreground lg:text-sm ">
+              August 2023 - Present
+            </p>
+            <ul className="mt-2 list-none space-y-1 pl-1 lg:space-y-2">
+              <li className="flex items-start space-x-1 lg:space-x-2">
+                <span className="w-4">
+                  <Icons.check2 className="h-4 w-4 stroke-red-600 dark:stroke-white" />
+                </span>
+                <p className="text-sm text-muted-foreground lg:text-base">
+                  Payment Aggregator API: Develop of a RESTful API for a payment
+                  aggregator, enabling seamless integration with various payment
+                  gateways.
+                </p>
+              </li>
+              <li className="flex items-start space-x-1 lg:space-x-2">
+                <span className="w-4">
+                  <Icons.check2 className="h-4 w-4 stroke-red-600 dark:stroke-white" />
+                </span>
+                <p className="text-sm text-muted-foreground lg:text-base">
+                  API Documentation: Designed and maintained comprehensive API
+                  documentation using Swagger (OpenAPI), facilitating easy
+                  adoption and use of the API
+                </p>
+              </li>
+              <li className="flex items-start space-x-1 lg:space-x-2">
+                <span className="w-4">
+                  <Icons.check2 className="h-4 w-4 stroke-red-600 dark:stroke-white" />
+                </span>
+                <p className="text-sm text-muted-foreground lg:text-base">
+                  Dashboard Management: Developed an intuitive dashboard using
+                  Active Admin, empowering users to manage their payment
+                  integrations and monitor transactions.
+                </p>
+              </li>
+              <li className="flex items-start space-x-1 lg:space-x-2">
+                <span className="w-4">
+                  <Icons.check2 className="h-4 w-4 stroke-red-600 dark:stroke-white" />
+                </span>
+                <p className="text-sm text-muted-foreground lg:text-base">
+                  Requirements Gathering & API Design: Collaborated closely with
+                  stakeholders to gather requirements and create detailed API
+                  specifications, ensuring alignment with business objectives.
+                </p>
+              </li>
+              <li className="flex items-start space-x-1 lg:space-x-2">
+                <span className="w-4">
+                  <Icons.check2 className="h-4 w-4 stroke-red-600 dark:stroke-white" />
+                </span>
+                <p className="text-sm text-muted-foreground lg:text-base">
+                  Third-Party Integration: Successfully integrated with multiple
+                  third-party payment gateways, adhering to their specific API
+                  requirements and security standards.
+                </p>
+              </li>
+              <li className="flex items-start space-x-1 lg:space-x-2">
+                <span className="w-4">
+                  <Icons.check2 className="h-4 w-4 stroke-red-600 dark:stroke-white" />
+                </span>
+                <p className="text-sm text-muted-foreground lg:text-base">
+                  Cloud Infrastructure: Leveraged Google Cloud Platform&apos;s
+                  (GCP) suite of services, including Kubernetes, Cloud SQL
+                  (PostgreSQL), Google Storage, Cloud Build, Compute Engine,
+                  Cloud Scheduler, and Cloud Function, to build a scalable and
+                  reliable infrastructure.
+                </p>
+              </li>
+              <li className="flex items-start space-x-1 lg:space-x-2">
+                <span className="w-4">
+                  <Icons.check2 className="h-4 w-4 stroke-red-600 dark:stroke-white" />
+                </span>
+                <p className="text-sm text-muted-foreground lg:text-base">
+                  Performance Optimization: Migrated from Sidekiq to Solid
+                  queue, effectively replacing Redis with PostgreSQL to reduce
+                  infrastructure costs.
+                </p>
+              </li>
+              <li className="flex items-start space-x-1 lg:space-x-2">
+                <span className="w-4">
+                  <Icons.check2 className="h-4 w-4 stroke-red-600 dark:stroke-white" />
+                </span>
+                <p className="text-sm text-muted-foreground lg:text-base">
+                  Monitoring & Reliability: Integrated Sentry and New Relic for
+                  real-time monitoring and error tracking, ensuring application
+                  stability and performance.
+                </p>
+              </li>
+              <li className="flex items-start space-x-1 lg:space-x-2">
+                <span className="w-4">
+                  <Icons.check2 className="h-4 w-4 stroke-red-600 dark:stroke-white" />
+                </span>
+                <p className="text-sm text-muted-foreground lg:text-base">
+                  Deployment & Environments: Managed both sandbox and production
+                  environments, streamlining the deployment process and
+                  minimizing downtime.
+                </p>
+              </li>
+              <li className="flex items-start space-x-1 lg:space-x-2">
+                <span className="w-4">
+                  <Icons.check2 className="h-4 w-4 stroke-red-600 dark:stroke-white" />
+                </span>
+                <p className="text-sm text-muted-foreground lg:text-base">
+                  Customer Engagement: Conducted demos for customers, showcasing
+                  the platform&apos;s features and benefits, and gathering
+                  feedback for further improvements.
+                </p>
+              </li>
+            </ul>
+          </Section>
           <Section>
             <section className="flex items-center space-x-1 lg:space-x-2">
               <p className="text-base font-semibold text-muted-foreground lg:text-lg">
@@ -182,8 +247,9 @@ export default function About() {
                   <Icons.check2 className="h-4 w-4 stroke-red-600 dark:stroke-white" />
                 </span>
                 <p className="text-sm text-muted-foreground lg:text-base">
-                  Developed and maintained the backend API for an OSS BTS system
-                  using Nestjs, MongoDB, and Redis
+                  Develop of a RESTful API monitoring dashboard using Nest JS,
+                  crafting robust APIs and efficient data processing services in
+                  Node.js and Go to handle high-volume FTP data streams.
                 </p>
               </li>
               <li className="flex items-start space-x-1 lg:space-x-2">
@@ -191,8 +257,9 @@ export default function About() {
                   <Icons.check2 className="h-4 w-4 stroke-red-600 dark:stroke-white" />
                 </span>
                 <p className="text-sm text-muted-foreground lg:text-base">
-                  Implemented various features and enhancements to improve
-                  system performance and functionality.
+                  Actively participated in daily stand-ups, offered technical
+                  insights, and collaborated closely with the team to resolve
+                  challenges and ensure timely ticket completion.
                 </p>
               </li>
               <li className="flex items-start space-x-1 lg:space-x-2">
@@ -200,16 +267,9 @@ export default function About() {
                   <Icons.check2 className="h-4 w-4 stroke-red-600 dark:stroke-white" />
                 </span>
                 <p className="text-sm text-muted-foreground lg:text-base">
-                  Implemented a data processing service in NodeJs and Golang to
-                  handle large datasets from FTP.
-                </p>
-              </li>
-              <li className="flex items-start space-x-1 lg:space-x-2">
-                <span className="w-4">
-                  <Icons.check2 className="h-4 w-4 stroke-red-600 dark:stroke-white" />
-                </span>
-                <p className="text-sm text-muted-foreground lg:text-base">
-                  Ensured efficient data handling, parsing, and transformation.
+                  Instituted code review processes, ensuring codebase integrity
+                  and smooth integration into the master branch before staging
+                  and production deployments.
                 </p>
               </li>
             </ul>
@@ -241,8 +301,9 @@ export default function About() {
                   <Icons.check2 className="h-4 w-4 stroke-red-600 dark:stroke-white" />
                 </span>
                 <p className="text-sm text-muted-foreground lg:text-base">
-                  Developed and Maintenance Pinterusaha App using Rails 6,
-                  StimulusJS, Postgres, and MongoDB.
+                  Transformed a web-based POS application by revamping the UI
+                  using Tailwind CSS, delivering a modern and user-friendly
+                  interface.
                 </p>
               </li>
               <li className="flex items-start space-x-1 lg:space-x-2">
@@ -250,7 +311,8 @@ export default function About() {
                   <Icons.check2 className="h-4 w-4 stroke-red-600 dark:stroke-white" />
                 </span>
                 <p className="text-sm text-muted-foreground lg:text-base">
-                  Redesign UI Pinterusaha App using Tailwind CSS.
+                  Streamlined application development by building robust RESTful
+                  APIs for seamless integration with the mobile app.
                 </p>
               </li>
               <li className="flex items-start space-x-1 lg:space-x-2">
@@ -258,8 +320,8 @@ export default function About() {
                   <Icons.check2 className="h-4 w-4 stroke-red-600 dark:stroke-white" />
                 </span>
                 <p className="text-sm text-muted-foreground lg:text-base">
-                  Built a web e-commerce application using Rails 6, StimulusJS,
-                  and Postgres.
+                  Proactively identified and resolved bugs, ensuring the
+                  application&apos;s stability and optimal performance.
                 </p>
               </li>
               <li className="flex items-start space-x-1 lg:space-x-2">
@@ -267,8 +329,8 @@ export default function About() {
                   <Icons.check2 className="h-4 w-4 stroke-red-600 dark:stroke-white" />
                 </span>
                 <p className="text-sm text-muted-foreground lg:text-base">
-                  Implemented product listing, shopping cart, and checkout
-                  functionalities.
+                  Successfully deployed the application, making it available to
+                  end-users.
                 </p>
               </li>
               <li className="flex items-start space-x-1 lg:space-x-2">
@@ -276,8 +338,11 @@ export default function About() {
                   <Icons.check2 className="h-4 w-4 stroke-red-600 dark:stroke-white" />
                 </span>
                 <p className="text-sm text-muted-foreground lg:text-base">
-                  Created an inventory management system using Rails 6,
-                  StimulusJS, and Postgres.
+                  Platform for Inventory Management: Develop of a Ruby on Rails
+                  inventory management system, including feature development,
+                  bug fixes, and upgrades. Maintained close communication with
+                  the client&apos;s project manager to ensure alignment with
+                  project goals.
                 </p>
               </li>
               <li className="flex items-start space-x-1 lg:space-x-2">
@@ -285,8 +350,9 @@ export default function About() {
                   <Icons.check2 className="h-4 w-4 stroke-red-600 dark:stroke-white" />
                 </span>
                 <p className="text-sm text-muted-foreground lg:text-base">
-                  Implemented features such as stock tracking, order management,
-                  and reporting.
+                  E-commerce Web for Sacrificial Animals: Developed and
+                  maintained a Ruby on Rails e-commerce platform, implementing
+                  new features, resolving issues, and managing deployments.
                 </p>
               </li>
               <li className="flex items-start space-x-1 lg:space-x-2">
@@ -294,17 +360,10 @@ export default function About() {
                   <Icons.check2 className="h-4 w-4 stroke-red-600 dark:stroke-white" />
                 </span>
                 <p className="text-sm text-muted-foreground lg:text-base">
-                  Developed an accounting system with Rails 6, StimulusJS, and
-                  Postgres.
-                </p>
-              </li>
-              <li className="flex items-start space-x-1 lg:space-x-2">
-                <span className="w-4">
-                  <Icons.check2 className="h-4 w-4 stroke-red-600 dark:stroke-white" />
-                </span>
-                <p className="text-sm text-muted-foreground lg:text-base">
-                  Implemented features like ledger maintenance, transaction
-                  recording, and financial reporting.
+                  Web-Based Accounting Management System: Developed and
+                  supported a Ruby on Rails accounting system, collaborating
+                  with stakeholders to translate business needs into technical
+                  solutions.
                 </p>
               </li>
             </ul>
@@ -336,16 +395,9 @@ export default function About() {
                   <Icons.check2 className="h-4 w-4 stroke-red-600 dark:stroke-white" />
                 </span>
                 <p className="text-sm text-muted-foreground lg:text-base">
-                  Collaborated on the MedictTrust project, contributing to the
-                  development of a medical data management system.
-                </p>
-              </li>
-              <li className="flex items-start space-x-1 lg:space-x-2">
-                <span className="w-4">
-                  <Icons.check2 className="h-4 w-4 stroke-red-600 dark:stroke-white" />
-                </span>
-                <p className="text-sm text-muted-foreground lg:text-base">
-                  Implemented functionality to display data on dashboard pages.
+                  Platform for Medical Recording Management : Develop a Ruby on
+                  Rails application for medical records management, ensuring
+                  data accuracy based on user requirements.
                 </p>
               </li>
             </ul>
@@ -465,7 +517,8 @@ export default function About() {
                       <Icons.check2 className="h-4 w-4 stroke-red-600 dark:stroke-white" />
                     </span>
                     <p className="text-sm text-muted-foreground lg:text-base">
-                      Google Cloud (Compute Engine, VPC Network)
+                      Google Cloud Platform (Kubernetes, Google Storage, Cloud
+                      Build, Compute Engine, Cloud Scheduler, Cloud Function)
                     </p>
                   </li>
                   <li className="flex items-start space-x-1 lg:space-x-2">
@@ -483,6 +536,22 @@ export default function About() {
                     </span>
                     <p className="text-sm text-muted-foreground lg:text-base">
                       Digital Ocean (Droplet, Database, Networking, Images)
+                    </p>
+                  </li>
+                  <li className="flex items-start space-x-1 lg:space-x-2">
+                    <span className="w-4">
+                      <Icons.check2 className="h-4 w-4 stroke-red-600 dark:stroke-white" />
+                    </span>
+                    <p className="text-sm text-muted-foreground lg:text-base">
+                      Vercel
+                    </p>
+                  </li>
+                  <li className="flex items-start space-x-1 lg:space-x-2">
+                    <span className="w-4">
+                      <Icons.check2 className="h-4 w-4 stroke-red-600 dark:stroke-white" />
+                    </span>
+                    <p className="text-sm text-muted-foreground lg:text-base">
+                      Fly.io
                     </p>
                   </li>
                 </ul>
